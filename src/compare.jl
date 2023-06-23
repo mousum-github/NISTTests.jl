@@ -112,12 +112,17 @@ compare(ct::NISTLRModel, beta::FPVector, stderr::FPVector, rsd::Real, rsq::Real)
         NISTLResults(ct, beta, stderr, rsd, rsq)
 
 
-function julia_compare(regmodel, datasetname, args...; kwargs...)
+function julia_compare(datasetname, args...; kwargs...)
     model = nist_model(datasetname)
     y, X = modelcols(model)
-    mdl = StatsModels.fit(regmodel, X, y, args...; kwargs...)
+    mdl = lm(X, y, args...; kwargs...)
     compare(model, coef(mdl), stderror(mdl), dispersion(mdl), r2(mdl))
 end
+
+# function julia_compare(X, y, args...; kwargs...)
+#    mdl = lm(X, y, args...; kwargs...)
+#    compare(model, coef(mdl), stderror(mdl), dispersion(mdl), r2(mdl))
+# end
 
 
 function Base.show(io::IO, ct::NISTLResults)

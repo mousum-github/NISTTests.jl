@@ -19,7 +19,7 @@ abstract type NISTModel end                         # model compa results
 include("utils.jl")
 include("nist.jl")
 include("compare.jl")
-include("noint.jl")
+include("noint1.jl")
 include("wampler.jl")
 include("pontius.jl")
 include("norris.jl")

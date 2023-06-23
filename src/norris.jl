@@ -6,11 +6,11 @@ norris_data
 These data are from a NIST study involving calibration of ozone monitors.
 The response variable (y) is the customer's measurement of ozone concentration and 
 the predictor variable (x) is NIST's measurement of ozone concentration.
-https://www.itl.nist.gov/div898/strd/lls/data/LINKS/i-Norris.shtml
+https://www.itl.nist.gov/div898/strd/lls/data/Norris.shtml
 """
 
 function norris_data(sink = DataFrame)
-    get_nist_data(:Norris)
+    get_nist_data(:Norris, sink)
 end
 
 """

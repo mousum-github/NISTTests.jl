@@ -49,9 +49,7 @@ function get_nist_data(filename::String, sink = DataFrame)
 end
 
 function get_nist_data(datasetname, sink = DataFrame)
-    datasetname in _NIST_LR_DATASETS ||
-        throw(ArgumentError("Unsupported dataset `$(datasetname)``; supported datasets are" *
-                            "$(_NIST_LR_DATASETS)"))
+    check_datasetname(datasetname)
     filename = String(datasetname) * ".csv"
     filename = lowercase(filename)
     get_nist_data(filename, sink)
